@@ -81,8 +81,8 @@ EOF
     #[[ $status == 0 ]] && echo "cookies登录1*******${username:0-4}成功"
     
     #if [[ $status == 1 ]]; then
-        curl -X POST -sA "$UA" -c $workdir/cookie "https://m.client.10010.com/mobileService/logout.htm?&desmobile=$username&version=android%40$unicom_version" >/dev/null
-        sleep 1
+#        curl -X POST -sA "$UA" -c $workdir/cookie "https://m.client.10010.com/mobileService/logout.htm?&desmobile=$username&version=android%40$unicom_version" >/dev/null
+#        sleep 1
         curl -sA "$UA" -b $workdir/cookie -c $workdir/cookie -d @$workdir/signdata "https://m.client.10010.com/mobileService/login.htm" >/dev/null
         sleep 3
         token=$(cat $workdir/cookie | grep -E "a_token" | awk  '{print $7}')
