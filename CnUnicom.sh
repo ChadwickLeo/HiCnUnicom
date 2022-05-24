@@ -148,7 +148,7 @@ function membercenter() {
     Referer="https://act.10010.com/SigninApp/signin/querySigninActivity.htm?$data"
     signresult=($(curl -X POST -sA "$UA" -b $workdir/cookie.SigninActivity -e "$Referer" "https://act.10010.com/SigninApp/signin/daySign?vesion=0.$(shuf -i 1234567890123456-9876543210654321 -n 1)" ))
     echo "签到结果:" ${signresult}
-    echo ${signresult} | grep -oE '\"msg\":\"ok!\"' - >/dev/null && exit 1
+    echo ${signresult} | grep -oE '\"msg\":\"ok!\"' - >/dev/null && echo "Error, signing failed." && exit 1
     #echo
     sleep 10
 #    curl -X POST -sA "$UA" -b $workdir/cookie.SigninActivity -e "$Referer" "https://act.10010.com/SigninApp/signin/todaySign"
